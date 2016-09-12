@@ -1,1 +1,1 @@
-web: gunicorn webapps.wsgi --log-file - 
+web: gunicorn webapps.wsgi -b 0.0.0.0:$PORT 
