@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="container">
+	<input type="hidden" id="curop" name="variable" value="{{op}}">
+	<input type="text" class="cal-input-box" maxlength="11" value='{{key|default:"0"}}' readonly>
+	<form method="POST">{%csrf_token%}
+		<div class="cal-buttons-container">
+			<div>
+				<button type="submit" name="key" value="{{key}}7:{{first}}:{{second}}:{{op}}" class="green-box">7</button>
+				<button type="submit" name="key" value="{{key}}8:{{first}}:{{second}}:{{op}}" class="green-box">8</button>
+				<button type="submit" name="key" value="{{key}}9:{{first}}:{{second}}:{{op}}" class="green-box">9</button>
+				<button type="submit" name="key" value="{{key}}+:{{first}}:{{second}}:{{op}}" class="red-box" id="key+">&plus;</button>
+			</div>
+			<div>
+				<button type="submit" name="key" value="{{key}}4:{{first}}:{{second}}:{{op}}" class="green-box">4</button>
+				<button type="submit" name="key" value="{{key}}5:{{first}}:{{second}}:{{op}}" class="green-box">5</button>
+				<button type="submit" name="key" value="{{key}}6:{{first}}:{{second}}:{{op}}" class="green-box">6</button>
+				<button type="submit" name="key" value="{{key}}-:{{first}}:{{second}}:{{op}}" class="red-box" id="key-">&minus;</button>
+			</div>
+			<div>
+				<button type="submit" name="key" value="{{key}}1:{{first}}:{{second}}:{{op}}" class="green-box">1</button>
+				<button type="submit" name="key" value="{{key}}2:{{first}}:{{second}}:{{op}}" class="green-box">2</button>
+				<button type="submit" name="key" value="{{key}}3:{{first}}:{{second}}:{{op}}" class="green-box">3</button>
+				<button type="submit" name="key" value="{{key}}*:{{first}}:{{second}}:{{op}}" class="red-box" id="key*">&times;</button>
+			</div>
+			<div>
+				<button type="submit" name="key" value="{{key}}0:{{first}}:{{second}}:{{op}}" class="green-box">0</button>
+				<button type="submit" name="key" value="{{key}}=:{{first}}:{{second}}:{{op}}" class="red-box" >&equals;</button>
+				<button type="submit" name="key" value="{{key}}/:{{first}}:{{second}}:{{op}}" class="red-box" id="key/">&divide;</button>
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	/* 
+	This jaavascript functions is just to highlight operator button to make it is more obvious visually on operator selection. No calculator logic is on client side
+	*/
+	function onload(){
+		var op = document.getElementById("curop").value;
+		selectKey("key"+op);
+	}
+    function selectKey(id)
+    {
+    	document.getElementById(id).style.backgroundColor = "#ffccdd";
+    };
+
+    function deselectKey(id)
+    {
+    	document.getElementById(id).bgcolor= "#FCE9DA";
+    };
+   
+</script>
+{%endblock content%}
